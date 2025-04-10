@@ -36,6 +36,10 @@ import com.mapbox.navigation.base.trip.model.RouteLegProgress
 import com.mapbox.navigation.base.trip.model.RouteProgress
 import com.mapbox.navigation.core.MapboxNavigation
 import com.mapbox.navigation.core.MapboxNavigationProvider
+import com.mapbox.navigation.core.mapmatching.MapMatchingAPICallback
+import com.mapbox.navigation.core.mapmatching.MapMatchingFailure
+import com.mapbox.navigation.core.mapmatching.MapMatchingOptions
+import com.mapbox.navigation.core.mapmatching.MapMatchingSuccessfulResult
 import com.mapbox.navigation.core.arrival.ArrivalObserver
 import com.mapbox.navigation.core.directions.session.RoutesObserver
 import com.mapbox.navigation.core.formatter.MapboxDistanceFormatter
@@ -97,6 +101,7 @@ class MapboxNavigationView(private val context: ThemedReactContext): FrameLayout
   private var locale = Locale.getDefault()
   private var travelMode: String = DirectionsCriteria.PROFILE_DRIVING
   private var exclude: String = ""
+  private var customPath: String = ""
 
 
   /**
@@ -722,6 +727,36 @@ class MapboxNavigationView(private val context: ThemedReactContext): FrameLayout
     )
   }
 
+  // 自定义路线导航
+  @OptIn(com.mapbox.navigation.base.ExperimentalPreviewMapboxNavigationAPI::class)
+  private fun customRouteNavigation(){
+      val options = MapMatchingOptions.Builder()
+//          .applyDefaultNavigationOptions()
+//          .applyLanguageAndVoiceUnitOptions(context)
+          .coordinates(this.customPath)
+          .language(locale.language)
+//          .steps(true)
+          .voiceInstructions(true)
+//          .voiceUnits(distanceUnit)
+          .profile(travelMode)
+          .build()
+      mapboxNavigation?.requestMapMatching(
+          options,
+          object : MapMatchingAPICallback {
+              override fun success(result: MapMatchingSuccessfulResult) {
+                  setRouteAndStartNavigation(result.navigationRoutes)
+              }
+
+              override fun failure(failure: MapMatchingFailure) {
+                  Log.e("MAP", "Map matching failed: ${failure.toString()}")
+              }
+              override fun onCancel() {
+                  Log.i("MAP", "Map matching request was canceled.")
+              }
+          }
+      )
+  }
+
   @SuppressLint("MissingPermission")
   private fun setRouteAndStartNavigation(routes: List<NavigationRoute>) {
     // set routes, where the first route in the list is the primary route that
@@ -746,13 +781,17 @@ class MapboxNavigationView(private val context: ThemedReactContext): FrameLayout
     mapboxNavigation?.registerLocationObserver(locationObserver)
     mapboxNavigation?.registerVoiceInstructionsObserver(voiceInstructionsObserver)
 
-    // Create a list of coordinates that includes origin, destination
-    val coordinatesList = mutableListOf<Point>()
-    this.origin?.let { coordinatesList.add(it) }
-    this.waypoints.let { coordinatesList.addAll(waypoints) }
-    this.destination?.let { coordinatesList.add(it) }
+    if(!this.customPath.isNullOrEmpty()) {
+      customRouteNavigation()
+    } else {
+      // Create a list of coordinates that includes origin, destination
+      val coordinatesList = mutableListOf<Point>()
+      this.origin?.let { coordinatesList.add(it) }
+      this.waypoints.let { coordinatesList.addAll(waypoints) }
+      this.destination?.let { coordinatesList.add(it) }
 
-    findRoute(coordinatesList)
+      findRoute(coordinatesList)
+    }
   }
 
   override fun onDetachedFromWindow() {
@@ -807,6 +846,10 @@ class MapboxNavigationView(private val context: ThemedReactContext): FrameLayout
 
   fun setExclude(exclude: String) {
     this.exclude = exclude
+  }
+
+  fun setCustomPath(customPath: String) {
+    this.customPath = customPath
   }
 
   fun setDirectionUnit(unit: String) {

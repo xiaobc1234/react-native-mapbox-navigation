@@ -100,6 +100,13 @@ class MapboxNavigationViewManager(private var reactContext: ReactApplicationCont
     }
   }
 
+  @ReactProp(name = "customPath")
+  override fun setCustomPath(view: MapboxNavigationView?, customPath: String?) {
+    if (customPath !== null) {
+      view?.setCustomPath(customPath)
+    }
+  }
+
   @ReactProp(name = "language")
   override fun setLocal(view: MapboxNavigationView?, language: String?) {
     if (language !== null) {

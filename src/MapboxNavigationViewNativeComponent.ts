@@ -25,6 +25,7 @@ interface NativeProps extends ViewProps {
   hideStatusView?: boolean;
   travelMode?: string;
   exclude?: string;
+  customPath?: string;
 }
 
 export default codegenNativeComponent<NativeProps>(

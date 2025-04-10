@@ -71,8 +71,16 @@ export interface MapboxNavigationProps {
   distanceUnit?: 'metric' | 'imperial';
   /**
    * 禁行配置 参考: https://docs.mapbox.com/api/navigation/directions/
+   * 限制 50个点，格式: "point(lng lat),point(lng lat)"
    */
   exclude?: string;
+  /**
+   * 自定义路线导航
+   * 参考: https://docs.mapbox.com/api/navigation/map-matching/
+   * coordinates属性, 限制2~100个点
+   * 格式: "lng,lat;lng,lat;lng,lat"
+   */
+  customPath?: string;
 
   /**
    * Specifies the mode of travel for navigation.

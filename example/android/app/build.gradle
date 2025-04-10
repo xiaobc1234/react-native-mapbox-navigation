@@ -81,6 +81,14 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+
+         // 读取 local.properties 中的属性
+        def localProperties = new Properties()
+        localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+        def mapboxToken = localProperties.getProperty("MAPBOX_DOWNLOADS_TOKEN", "")
+
+        // 将属性值写入 resValue
+        resValue "string", "mapbox_downloads_token", mapboxToken
     }
     signingConfigs {
         debug {

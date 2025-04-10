@@ -24,12 +24,21 @@ export default function App() {
 
   return (
     <MapboxNavigation
-      startOrigin={{ latitude: 30.699239, longitude: 76.6905161 }}
+      // startOrigin={{ latitude: 30.699239, longitude: 76.6905161 }}
+      startOrigin={{
+        latitude: 30.265128345296805,
+        longitude: 119.96226512303575,
+      }}
       // destination={{ latitude: 30.6590196, longitude: 76.8185852 }}
+      // destination={{
+      //   latitude: 30.709241,
+      //   longitude: 76.695669,
+      //   title: 'Pickup',
+      // }}
       destination={{
-        latitude: 30.709241,
-        longitude: 76.695669,
-        title: 'Pickup',
+        latitude: 30.28585862068176,
+        longitude: 119.9985793993648,
+        // title: 'Pickup',
       }}
       travelMode="driving-traffic"
       style={styles.container}
@@ -39,20 +48,20 @@ export default function App() {
       //   { latitude: 30.726848, longitude: 76.733758 },
       //   { latitude: 30.738819, longitude: 76.757902 },
       // ]}
-      waypoints={[
-        {
-          latitude: 30.701982,
-          longitude: 76.693183,
-          name: 'Waypoint 1',
-          separatesLegs: true,
-        },
-        {
-          latitude: 30.704476,
-          longitude: 76.690653,
-          name: 'Waypoint 2',
-          separatesLegs: false,
-        },
-      ]}
+      // waypoints={[
+      //   {
+      //     latitude: 30.701982,
+      //     longitude: 76.693183,
+      //     name: 'Waypoint 1',
+      //     separatesLegs: true,
+      //   },
+      //   {
+      //     latitude: 30.704476,
+      //     longitude: 76.690653,
+      //     name: 'Waypoint 2',
+      //     separatesLegs: false,
+      //   },
+      // ]}
       language="en"
       distanceUnit="metric"
       onCancelNavigation={() => {

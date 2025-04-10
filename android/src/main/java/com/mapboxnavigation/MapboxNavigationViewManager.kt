@@ -92,6 +92,14 @@ class MapboxNavigationViewManager(private var reactContext: ReactApplicationCont
     view?.setWaypoints(waypoints)
   }
 
+
+  @ReactProp(name = "exclude")
+  override fun setExclude(view: MapboxNavigationView?, exclude: String?) {
+    if (exclude !== null) {
+      view?.setExclude(exclude)
+    }
+  }
+
   @ReactProp(name = "language")
   override fun setLocal(view: MapboxNavigationView?, language: String?) {
     if (language !== null) {

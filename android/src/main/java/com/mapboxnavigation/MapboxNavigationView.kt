@@ -96,6 +96,8 @@ class MapboxNavigationView(private val context: ThemedReactContext): FrameLayout
   private var distanceUnit: String = DirectionsCriteria.IMPERIAL
   private var locale = Locale.getDefault()
   private var travelMode: String = DirectionsCriteria.PROFILE_DRIVING
+  private var exclude: String = ""
+
 
   /**
    * Bindings to the example layout.
@@ -699,6 +701,7 @@ class MapboxNavigationView(private val context: ThemedReactContext): FrameLayout
         .voiceInstructions(true)
         .voiceUnits(distanceUnit)
         .profile(travelMode)
+        .exclude(this.exclude)
         .build(),
       object : NavigationRouterCallback {
         override fun onCanceled(routeOptions: RouteOptions, @RouterOrigin routerOrigin: String) {
@@ -800,6 +803,10 @@ class MapboxNavigationView(private val context: ThemedReactContext): FrameLayout
 
   fun setWaypoints(waypoints: List<Point>) {
     this.waypoints = waypoints
+  }
+
+  fun setExclude(exclude: String) {
+    this.exclude = exclude
   }
 
   fun setDirectionUnit(unit: String) {

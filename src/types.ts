@@ -69,6 +69,10 @@ export interface MapboxNavigationProps {
   destination: Coordinate & { title?: string };
   language?: Language;
   distanceUnit?: 'metric' | 'imperial';
+  /**
+   * 禁行配置 参考: https://docs.mapbox.com/api/navigation/directions/
+   */
+  exclude?: string;
 
   /**
    * Specifies the mode of travel for navigation.

@@ -24,6 +24,7 @@ interface NativeProps extends ViewProps {
   showsEndOfRouteFeedback?: boolean;
   hideStatusView?: boolean;
   travelMode?: string;
+  exclude?: string;
 }
 
 export default codegenNativeComponent<NativeProps>(

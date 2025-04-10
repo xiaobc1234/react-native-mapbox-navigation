@@ -44,6 +44,7 @@ export default function App() {
       style={styles.container}
       shouldSimulateRoute={true}
       showCancelButton={true}
+      exclude="point(119.9705482540415 30.273991623149275),point(119.97414684181423 30.27502439273032)"
       // waypoints={[
       //   { latitude: 30.726848, longitude: 76.733758 },
       //   { latitude: 30.738819, longitude: 76.757902 },

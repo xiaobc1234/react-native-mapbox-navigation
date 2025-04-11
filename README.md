@@ -2,6 +2,8 @@
 
 Mapbox React Native SDKs enable interactive maps and real-time, traffic-aware turn-by-turn navigation, dynamically adjusting routes to avoid congestion.
 
+从 https://github.com/pawan-pk/react-native-mapbox-navigation fork, 增加了限行区域、自定义路线导航等功能
+
 🆕&nbsp; Uses Mapbox navigation v3 SDK<br>
 📱&nbsp; Supports iOS, Android<br>
 🌍&nbsp; Various languages<br>

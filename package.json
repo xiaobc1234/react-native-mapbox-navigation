@@ -34,7 +34,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace @pawan-pk/react-native-mapbox-navigation-example",
+    "example": "yarn workspace @cniot/react-native-mapbox-navigation-example",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",

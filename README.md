@@ -1,4 +1,4 @@
-# @pawan-pk/react-native-mapbox-navigation <br/>[![npm](https://img.shields.io/npm/v/%40pawan-pk%2Freact-native-mapbox-navigation)](https://www.npmjs.com/package/@pawan-pk/react-native-mapbox-navigation) [![Build status](https://img.shields.io/github/actions/workflow/status/pawan-pk/react-native-mapbox-navigation/ci.yml?branch=main&label=tests)](https://github.com/pawan-pk/react-native-mapbox-navigation/actions) [![npm](https://img.shields.io/npm/dw/%40pawan-pk%2Freact-native-mapbox-navigation)](https://www.npmjs.com/package/@pawan-pk/react-native-mapbox-navigation)
+# @cniot/react-native-mapbox-navigation <br/>[![npm](https://img.shields.io/npm/v/%40pawan-pk%2Freact-native-mapbox-navigation)](https://www.npmjs.com/package/@cniot/react-native-mapbox-navigation) [![Build status](https://img.shields.io/github/actions/workflow/status/pawan-pk/react-native-mapbox-navigation/ci.yml?branch=main&label=tests)](https://github.com/pawan-pk/react-native-mapbox-navigation/actions) [![npm](https://img.shields.io/npm/dw/%40pawan-pk%2Freact-native-mapbox-navigation)](https://www.npmjs.com/package/@cniot/react-native-mapbox-navigation)
 
 Mapbox React Native SDKs enable interactive maps and real-time, traffic-aware turn-by-turn navigation, dynamically adjusting routes to avoid congestion.
 
@@ -43,10 +43,10 @@ Mapbox React Native SDKs enable interactive maps and real-time, traffic-aware tu
 
 ```sh
 # yarn
-yarn add @pawan-pk/react-native-mapbox-navigation
+yarn add @cniot/react-native-mapbox-navigation
 
 # npm
-npm install @pawan-pk/react-native-mapbox-navigation
+npm install @cniot/react-native-mapbox-navigation
 ```
 
 ## iOS Specific Instructions
@@ -122,7 +122,7 @@ npm install @pawan-pk/react-native-mapbox-navigation
 ## Usage
 
 ```js
-import MapboxNavigation from '@pawan-pk/react-native-mapbox-navigation';
+import MapboxNavigation from '@cniot/react-native-mapbox-navigation';
 import { StyleSheet } from 'react-native';
 
 export default function App() {

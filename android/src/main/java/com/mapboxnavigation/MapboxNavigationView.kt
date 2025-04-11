@@ -694,8 +694,7 @@ class MapboxNavigationView(private val context: ThemedReactContext): FrameLayout
     indices.add(coordinates.count() - 1)
     names.add(destinationTitle)
 
-    mapboxNavigation?.requestRoutes(
-      RouteOptions.builder()
+    val routeOptionsBuilder = RouteOptions.builder()
         .applyDefaultNavigationOptions()
         .applyLanguageAndVoiceUnitOptions(context)
         .coordinatesList(coordinates)
@@ -706,8 +705,13 @@ class MapboxNavigationView(private val context: ThemedReactContext): FrameLayout
         .voiceInstructions(true)
         .voiceUnits(distanceUnit)
         .profile(travelMode)
-        .exclude(this.exclude)
-        .build(),
+    if (this.exclude != null && !this.exclude.isEmpty()) {
+      routeOptionsBuilder.exclude(this.exclude)
+    }
+    val routeOptions = routeOptionsBuilder.build()
+
+    mapboxNavigation?.requestRoutes(
+      routeOptions,
       object : NavigationRouterCallback {
         override fun onCanceled(routeOptions: RouteOptions, @RouterOrigin routerOrigin: String) {
           // no implementation

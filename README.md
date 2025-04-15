@@ -4,6 +4,10 @@ Mapbox React Native SDKs enable interactive maps and real-time, traffic-aware tu
 
 从 https://github.com/pawan-pk/react-native-mapbox-navigation fork, 增加了限行区域、自定义路线导航等功能
 
+## 注意
+  * ios V3版本不支持pods安装，请参考官方文档 通过package dependencies安装
+
+
 🆕&nbsp; Uses Mapbox navigation v3 SDK<br>
 📱&nbsp; Supports iOS, Android<br>
 🌍&nbsp; Various languages<br>
